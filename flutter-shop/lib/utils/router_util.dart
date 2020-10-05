@@ -1,5 +1,6 @@
 //utils/router_util.dart文件
 import 'package:flutter/material.dart';
+import 'package:flutter_shop/model/cart_model.dart';
 import 'package:flutter_shop/page/category/category_good_list_page.dart';
 import 'package:flutter_shop/page/detail/good_detail_page.dart';
 import 'package:flutter_shop/page/user/login_page.dart';
@@ -61,11 +62,11 @@ class RouterUtil{
         ));
   }
   //路由至填写订单页面
-  static toWriteOrderPage(BuildContext context){
+  static toWriteOrderPage(BuildContext context, List<CartModel> cartList){
     Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => WriteOrderPage(),
+          builder: (context) => WriteOrderPage(cartList),
         ));
   }
   //路由至订单列表页面

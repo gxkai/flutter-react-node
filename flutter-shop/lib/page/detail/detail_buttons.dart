@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_shop/config/index.dart';
+import 'package:flutter_shop/model/cart_model.dart';
 import 'package:flutter_shop/model/good_detail_model.dart';
 import 'package:flutter_shop/service/http_service.dart';
 import 'package:flutter_shop/call/notify.dart';
@@ -62,7 +63,10 @@ class DetailButtons extends StatelessWidget {
           KMediumButton(
             text: KString.BUY_GOOD,
             color: KColor.BUY_NOW_BUTTON_COLOR,
-            onPressed: () {},
+            onPressed: () {
+              //立即购买
+              this._immediatePurchase(context);
+            },
           ),
         ],
       ),
@@ -101,6 +105,29 @@ class DetailButtons extends StatelessWidget {
         //派发消息 重新加载购物车列表
         Call.dispatch(Notify.RELOAD_CART_LIST);
       }
+    }
+  }
+
+  //立即购买
+  _immediatePurchase(BuildContext context) async {
+    //判断是否登录
+    bool login = await TokenUtil.isLogin();
+    if (!login) {
+      //没有登录跳转至登录界面
+      RouterUtil.toLoginPage(context);
+    } else {
+      //获取登录用户信息
+      var user = await TokenUtil.getUserInfo();
+      List<CartModel> cartList = [];
+      CartModel cartModel = new CartModel();
+      cartModel.good_count = 1;
+      cartModel.good_id = this._goodDetailModel.id;
+      cartModel.good_image = this._goodDetailModel.images;
+      cartModel.good_name = this._goodDetailModel.name;
+      cartModel.good_price = this._goodDetailModel.discount_price ?? this._goodDetailModel.price;
+      cartModel.user_id = user['id'];
+      cartList.add(cartModel);
+      RouterUtil.toWriteOrderPage(context, cartList);
     }
   }
 }

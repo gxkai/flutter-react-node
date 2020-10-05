@@ -13,7 +13,8 @@ import 'package:flutter_shop/utils/token_util.dart';
 import 'package:flutter_shop/component/medium_button.dart';
 //填写订单页面
 class WriteOrderPage extends StatefulWidget{
-
+  List<CartModel> cartList;
+  WriteOrderPage(this.cartList);
   @override
   _WriteOrderPageState createState() => _WriteOrderPageState();
 }
@@ -39,16 +40,12 @@ class _WriteOrderPageState extends State<WriteOrderPage> {
 
   //初始化数据
   _initData() async {
-    //获取数据中心存储的购物车数据
-    List<CartModel> cartList = DataCenter.getInstance().cartList;
+    List<CartModel> cartList = widget.cartList;
     int price = 0;
     //计算总价
     cartList.forEach((CartModel item) {
-      //提取选中的商品
-      if(item.is_checked == 1){
-        //统计总价
-        price += item.good_price * item.good_count;
-      }
+      //统计总价
+      price += item.good_price * item.good_count;
     });
     //获取本地用户信息
     var user = await TokenUtil.getUserInfo();
@@ -250,15 +247,8 @@ class _WriteOrderPageState extends State<WriteOrderPage> {
   _submitOrder() async {
 
     //获取商品列表
-    List<CartModel> cartList = DataCenter.getInstance().cartList;
+    List<CartModel> list = widget.cartList;
 
-    //提取购物车已选中的商品数据
-    List<CartModel> list = List<CartModel>();
-    for(int i = 0; i< cartList.length; i++){
-      if(cartList[i].is_checked == 1){
-        list.add(cartList[i]);
-      }
-    }
     //将列表数据转换成Json
     var goodJson = list.map((v) => v.toJson()).toList();
     print("序列化:" + goodJson.toString());

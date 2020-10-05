@@ -121,7 +121,17 @@ class CartSettleAccount extends StatelessWidget {
     return KSmallButton(
       text: KString.SETTLE_ACCOUNT + '(${_goodCount})',
       onPressed: () {
-        RouterUtil.toWriteOrderPage(context);
+        //获取数据中心存储的购物车数据
+        List<CartModel> cartList = [];
+        DataCenter.getInstance().cartList.forEach((e) =>
+          //提取选中商品
+          {
+            if(e.is_checked == 1) {
+              cartList.add(e)
+            }
+          }
+        );
+        RouterUtil.toWriteOrderPage(context, cartList);
       },
     );
   }
