@@ -34,10 +34,15 @@ class DetailButtons extends StatelessWidget {
             //居中对齐
             alignment: Alignment.center,
             //购物车图标
-            child: Icon(
-              Icons.shopping_cart,
-              size: 35,
-              color: KColor.PRIMARY_COLOR,
+            child: IconButton(
+              icon: Icon(
+                Icons.shopping_cart,
+                size: 35,
+                color: KColor.PRIMARY_COLOR,
+              ),
+              onPressed: () {
+                RouterUtil.toCartPage(context);
+              },
             ),
           ),
           //添加至购物车
