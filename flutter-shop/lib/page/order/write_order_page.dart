@@ -1,6 +1,8 @@
 //page/order/write_order_page.dart文件
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_shop/call/call.dart';
+import 'package:flutter_shop/call/notify.dart';
 import 'package:flutter_shop/data/data_center.dart';
 import 'package:flutter_shop/model/cart_model.dart';
 import 'package:flutter_shop/service/http_service.dart';
@@ -281,6 +283,8 @@ class _WriteOrderPageState extends State<WriteOrderPage> {
     //调用添加订单接口 传入提交订单参数
     var response = await HttpService.post(ApiUrl.ORDER_ADD,param: data);
     if(response['code'] == 0){
+      //派发消息 刷新购物车
+      Call.dispatch(Notify.RELOAD_CART_LIST);
       //返回成功后跳转至订单列表页面
       RouterUtil.toOrderListPage(context);
     }
