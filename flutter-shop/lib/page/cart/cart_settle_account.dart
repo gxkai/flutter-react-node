@@ -1,9 +1,12 @@
 //page/cart/cart_settle_account.dart文件
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_shop/call/call.dart';
+import 'package:flutter_shop/call/notify.dart';
 import 'package:flutter_shop/config/index.dart';
 import 'package:flutter_shop/model/cart_model.dart';
 import 'package:flutter_shop/data/data_center.dart';
+import 'package:flutter_shop/service/http_service.dart';
 import 'package:flutter_shop/utils/router_util.dart';
 import 'package:flutter_shop/component/circle_check_box.dart';
 import 'package:flutter_shop/component/small_button.dart';
@@ -33,14 +36,20 @@ class CartSettleAccount extends StatelessWidget {
 
   //全选按钮
   Widget _allCheckBox(BuildContext context) {
-    bool isAllCheck = false;
     return Container(
       child: Row(
         children: <Widget>[
           CircleCheckBox(
-            value: isAllCheck,
+            value: DataCenter.getInstance().cartList.every((element) => element.is_checked == 1),
             onChanged: (bool val) {
-              //TODO 全选处理
+              int is_checked = val ? 1 : 0;
+              List<int> ids = [];
+              DataCenter.getInstance().cartList.forEach((CartModel element) {
+                if(element.is_checked != is_checked) {
+                  ids.add(element.id);
+                }
+              });
+              _goodCheckedUpdateBatch(context, is_checked, ids);
             },
           ),
           //全选
@@ -115,5 +124,24 @@ class CartSettleAccount extends StatelessWidget {
         RouterUtil.toWriteOrderPage(context);
       },
     );
+  }
+
+  //更新购物车条目
+  _goodCheckedUpdateBatch(BuildContext context, int is_checked, List<int> ids) async {
+    //参数
+    var param = {
+      // id 列表
+      'ids': ids,
+      //是否选中
+      'is_checked': is_checked,
+    };
+    //调用购物车更新接口
+    var response = await HttpService.post(ApiUrl.CART_UPDATE_BATCH, param: param);
+    //将Json数据转换成购物车列表数据模型
+    CartListModel model = CartListModel.fromJson(response['data']);
+    //设置数据中心购物列表数据
+    DataCenter.getInstance().cartList = model.list;
+    //派发消息 刷新购物车
+    Call.dispatch(Notify.RELOAD_CART_LIST);
   }
 }

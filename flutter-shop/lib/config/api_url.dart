@@ -32,6 +32,9 @@ class ApiUrl{
   //更新购物车商品
   static const String CART_UPDATE = URL_HEAD + '/client/cart/update';
 
+  //批量更新购物车商品
+  static const String CART_UPDATE_BATCH = URL_HEAD + '/client/cart/update/batch';
+
   //删除购物车商品
   static const String CART_DELETE = URL_HEAD + '/client/cart/delete';
 

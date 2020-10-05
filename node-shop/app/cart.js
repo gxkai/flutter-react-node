@@ -11,7 +11,7 @@ router.get('/client/cart/list',(req,res) => {
     let {user_id} = req.query;
 
     let sql = `select * from shop_cart where user_id = ?`;
-	
+
 	db.exec(sql,[user_id],(results,fields) => {
 		res.json({
 			code:0,
@@ -32,7 +32,7 @@ router.post('/client/cart/update',(req,res) => {
         db.exec(sql,[good_count,is_checked,id],(results,fields) => {
 
             let sql_list = `select * from shop_cart`;
-	
+
             db.exec(sql_list,[],(results,fields) => {
                 res.json({
                     code:0,
@@ -44,6 +44,24 @@ router.post('/client/cart/update',(req,res) => {
             });
         });
 });
+
+//客户端购物车批量更新
+router.post('/client/cart/update/batch', ((req, res) => {
+    let {ids, is_checked} = req.body;
+    let sql = `UPDATE shop_cart SET is_checked = ? WHERE id in (?)`;
+    db.exec(sql, [is_checked, ids], (results, fields) => {
+        let sql_list = `select * from shop_cart`;
+        db.exec(sql_list,[],(results,fields) => {
+            res.json({
+                code:0,
+                message:'Success! ',
+                data: {
+                    list:results,
+                }
+            });
+        });
+    })
+}))
 
 
 //添加商品至购物车
@@ -77,9 +95,9 @@ router.post('/client/cart/delete',(req,res) => {
     let { id } = req.body;
     let sql = `delete from shop_cart where id = ?`;
     db.exec(sql,[id],(results,fields) => {
-       
+
         let sql_list = `select * from shop_cart`;
-	
+
         db.exec(sql_list,[],(results,fields) => {
             res.json({
                 code:0,
