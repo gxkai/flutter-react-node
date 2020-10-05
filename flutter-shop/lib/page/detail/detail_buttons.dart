@@ -120,6 +120,7 @@ class DetailButtons extends StatelessWidget {
       var user = await TokenUtil.getUserInfo();
       List<CartModel> cartList = [];
       CartModel cartModel = new CartModel();
+      cartModel.id = 0;
       cartModel.good_count = 1;
       cartModel.good_id = this._goodDetailModel.id;
       cartModel.good_image = this._goodDetailModel.images;
