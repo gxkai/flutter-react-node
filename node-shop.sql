@@ -181,13 +181,13 @@ CREATE TABLE `shop_user` (
 -- Records of shop_user
 -- ----------------------------
 BEGIN;
-INSERT INTO `shop_user` VALUES (1, 'admin', '123456', '/images/head/head.jpeg', '18872998833', '北京市海淀区');
-INSERT INTO `shop_user` VALUES (4, 'test1', '123456', '/images/head/head.jpeg', '18872998834', '深圳市深南大道');
-INSERT INTO `shop_user` VALUES (10, 'test2', '123456', '/images/head/head.jpeg', '15566555555', '湖北省武汉市关山大道');
-INSERT INTO `shop_user` VALUES (24, 'test3', '123456', '/images/head/head.jpeg', '14455443344', 'shanghai');
-INSERT INTO `shop_user` VALUES (25, 'test4', '123456', '/images/head/head.jpeg', '12233445533', 'hubeiwuhan');
-INSERT INTO `shop_user` VALUES (26, 'test6', '123456', '/images/head/head.jpeg', '13322334423', 'hubeiwuhan');
-INSERT INTO `shop_user` VALUES (27, 'test8', '123456', '/images/head/head.jpeg', '13344556622', 'beijing');
+INSERT INTO `shop_user` VALUES (1, 'admin', '$2b$10$fCdx9w7ezqDbNljyfIHMq.UiNsOgsDWtEgAryBywgoNqGxZmwh4ly', '/images/head/head.jpeg', '18872998833', '北京市海淀区');
+INSERT INTO `shop_user` VALUES (4, 'test1', '$2b$10$fCdx9w7ezqDbNljyfIHMq.UiNsOgsDWtEgAryBywgoNqGxZmwh4ly', '/images/head/head.jpeg', '18872998834', '深圳市深南大道');
+INSERT INTO `shop_user` VALUES (10, 'test2', '$2b$10$fCdx9w7ezqDbNljyfIHMq.UiNsOgsDWtEgAryBywgoNqGxZmwh4ly', '/images/head/head.jpeg', '15566555555', '湖北省武汉市关山大道');
+INSERT INTO `shop_user` VALUES (24, 'test3', '$2b$10$fCdx9w7ezqDbNljyfIHMq.UiNsOgsDWtEgAryBywgoNqGxZmwh4ly', '/images/head/head.jpeg', '14455443344', 'shanghai');
+INSERT INTO `shop_user` VALUES (25, 'test4', '$2b$10$fCdx9w7ezqDbNljyfIHMq.UiNsOgsDWtEgAryBywgoNqGxZmwh4ly', '/images/head/head.jpeg', '12233445533', 'hubeiwuhan');
+INSERT INTO `shop_user` VALUES (26, 'test6', '$2b$10$fCdx9w7ezqDbNljyfIHMq.UiNsOgsDWtEgAryBywgoNqGxZmwh4ly', '/images/head/head.jpeg', '13322334423', 'hubeiwuhan');
+INSERT INTO `shop_user` VALUES (27, 'test8', '$2b$10$fCdx9w7ezqDbNljyfIHMq.UiNsOgsDWtEgAryBywgoNqGxZmwh4ly', '/images/head/head.jpeg', '13344556622', 'beijing');
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;

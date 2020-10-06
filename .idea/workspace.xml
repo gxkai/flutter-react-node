@@ -6,11 +6,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c83aeaeb-6282-4257-b401-7f2216d008a1" name="Default Changelist" comment="feat:[购物车]批量更新;">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node-shop/app/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/node-shop/app/user.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node-shop/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/node-shop/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node-shop/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node-shop/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.MD" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node-shop.sql" beforeDir="false" afterPath="$PROJECT_DIR$/node-shop.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +30,11 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="settings.nodejs" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
   </component>
   <component name="RunManager" selected="npm.node-shop">
     <configuration name="docker-compose.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
@@ -75,7 +77,7 @@
       <workItem from="1601798985279" duration="5276000" />
       <workItem from="1601855540518" duration="2208000" />
       <workItem from="1601860200399" duration="3207000" />
-      <workItem from="1601944331963" duration="2256000" />
+      <workItem from="1601944331963" duration="2502000" />
     </task>
     <task id="LOCAL-00001" summary="feat:[购物车]批量更新;">
       <created>1601859931468</created>
@@ -112,7 +114,14 @@
       <option name="project" value="LOCAL" />
       <updated>1601869010153</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="fix: [user]密码加密#">
+      <created>1601949254625</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1601949254625</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -165,13 +174,18 @@
     <MESSAGE value="feat: [购物车]按钮跳转;" />
     <MESSAGE value="feat: [订单]结算删除购物车;" />
     <MESSAGE value="feat: [商品详情]立即购买;" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: [商品详情]立即购买;" />
+    <MESSAGE value="fix: [user]密码加密#" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: [user]密码加密#" />
   </component>
   <component name="WindowStateProjectService">
     <state x="304" y="187" width="1071" height="700" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1601858834150">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="304" y="187" width="1071" height="700" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1680.1050/1680.0.1920.1080@0.0.1680.1050" timestamp="1601858834150" />
+    <state x="561" y="334" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1601949748973">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="561" y="334" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1680.1050/1680.0.1920.1080@0.0.1680.1050" timestamp="1601949748973" />
     <state x="603" y="235" key="#xdebugger.evaluate" timestamp="1601865981849">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
@@ -284,10 +298,10 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state width="500" height="445" key="SwitcherDM/0.0.1680.1050/1680.0.1920.1080@0.0.1680.1050" timestamp="1601865894623" />
-    <state x="440" y="265" key="Vcs.Push.Dialog.v2" timestamp="1601869011808">
+    <state x="440" y="265" key="Vcs.Push.Dialog.v2" timestamp="1601949255943">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="440" y="265" key="Vcs.Push.Dialog.v2/0.0.1680.1050/1680.0.1920.1080@0.0.1680.1050" timestamp="1601869011808" />
+    <state x="440" y="265" key="Vcs.Push.Dialog.v2/0.0.1680.1050/1680.0.1920.1080@0.0.1680.1050" timestamp="1601949255943" />
     <state x="440" y="265" key="Vcs.Push.Dialog.v2/0.0.1680.1050/1680.23.1920.1057@0.0.1680.1050" timestamp="1601864578402" />
     <state x="541" y="280" width="737" height="490" key="find.popup" timestamp="1601864891386">
       <screen x="0" y="0" width="1680" height="1050" />
