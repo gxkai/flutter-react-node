@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_shop/model/cart_model.dart';
 import 'package:flutter_shop/page/category/category_good_list_page.dart';
 import 'package:flutter_shop/page/detail/good_detail_page.dart';
+import 'package:flutter_shop/page/main_page.dart';
 import 'package:flutter_shop/page/user/activate_page.dart';
 import 'package:flutter_shop/page/user/login_page.dart';
 import 'package:flutter_shop/page/user/register_page.dart';
@@ -96,6 +97,15 @@ class RouterUtil{
         context,
         MaterialPageRoute(
             builder: (context) => ActivatePage()
+        )
+    );
+  }
+
+  static  void toMainPage(BuildContext context, int _currentIndex) {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context)  => MainPage(_currentIndex)
         )
     );
   }

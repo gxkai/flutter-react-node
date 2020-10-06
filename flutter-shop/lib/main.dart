@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
         primaryColor: KColor.PRIMARY_COLOR,
       ),
       //主页
-      home: MainPage(),
+      home: MainPage(0),
     );
   }
 }

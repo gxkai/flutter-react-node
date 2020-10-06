@@ -10,6 +10,7 @@ import 'package:flutter_shop/service/http_service.dart';
 import 'package:flutter_shop/component/big_button.dart';
 import 'package:flutter_shop/component/logo_container.dart';
 import 'package:flutter_shop/component/item_text_field.dart';
+import 'package:flutter_shop/utils/token_util.dart';
 //注册页面
 class RegisterPage extends StatefulWidget {
   @override
@@ -274,8 +275,8 @@ class _RegisterPageState extends State<RegisterPage> {
       //将Json数据转换成用户数据模型
       UserModel model = UserModel.fromJson(response['data']);
       print(model.username);
-//      //跳转至个人中心页面
-//      RouterUtil.toMemberPage(context);
+      //保存登录用户信息
+      await TokenUtil.saveLoginInfo(model);
       //跳转到激活页面
       RouterUtil.toActivatePage(context);
       //弹出注册成功消息

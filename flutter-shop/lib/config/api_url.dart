@@ -8,6 +8,9 @@ class ApiUrl{
   //登录
   static const String USER_LOGIN = URL_HEAD + '/user/login';
 
+  //机会
+  static const String USER_ACTIVATE = URL_HEAD + '/user/activate';
+
   //注册
   static const String USER_REGISTER = URL_HEAD + '/user/register';
 

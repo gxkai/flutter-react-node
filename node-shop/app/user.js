@@ -137,6 +137,48 @@ router.post('/user/register',(req,res)  => {
     });
 });
 
+//激活
+router.post('/user/activate', (req,res) => {
+    let {user_id, activated_code} = req.body;
+    //查询帐户数据
+    let sql = `select * from shop_user where id = ?`;
+    db.exec(sql,[user_id],(results,fields) => {
+        console.log(results[0]);
+        let {id, username, activated_code: hash, mobile,address,head_image } = results[0];
+        if(!bcrypt.compareSync(activated_code, hash)) {
+            res.json({
+                code:1000,
+                message:"激活码错误",
+                data: results
+            });
+            return false;
+        }
+
+        let sql =  `update shop_user set activated = ? where id = ?`;
+        db.exec(sql, [1, user_id], (results, fields) => {
+            let payload = {
+                id,
+                username,
+            }
+            // 生成token "1d", "20h", 60
+            let token = jwt.sign(payload,'secret',{expiresIn:'365d'});
+            console.log("生成的token:" + token);
+            res.json({
+                code:0,
+                message:'激活成功',
+                data: {
+                    token,
+                    id,
+                    username,
+                    mobile,
+                    address,
+                    head_image,
+                }
+            });
+        })
+    });
+})
+
 router.get('/admin/user/list',(req,res)  => {
     //查询帐户数据
     let sql = `select id,username,head_image,mobile,address from shop_user order by id`;

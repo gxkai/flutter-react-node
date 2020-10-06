@@ -8,12 +8,20 @@ import 'package:flutter_shop/page/user/member_page.dart';
 import 'package:flutter_shop/config/index.dart';
 //主界面
 class MainPage extends StatefulWidget {
+  int _currentIndex;
+  MainPage(this._currentIndex);
   _MainPageState createState() => _MainPageState();
 }
 
 class _MainPageState extends State<MainPage>  {
   //当前索引
   int _currentIndex = 0;
+  @override
+  void initState() {
+    super.initState();
+    this._currentIndex = widget._currentIndex ?? 0;
+  }
+
   //主要界面选项卡
   List<BottomNavigationBarItem> _tabs = [
     //首页
