@@ -19,12 +19,14 @@ class KString{
   static const String ALL_PRICE = '合计';
   static const String ORDER_TITLE = '我的订单';
   static const String LOGIN_TITLE = '登录';
+  static const String ACTIVATE_TITLE = '激活';
   static const String LOGOUT_TITLE = '退出登录';
   static const String FORGET_PASSWORD = '忘记密码';
   static const String FAST_REGISTER = '快速注册';
   static const String PLEASE_INPUT_NAME = '请输入用户名';
   static const String PLEASE_INPUT_PWD = '请输入密码';
   static const String PLEASE_INPUT_MOBILE = '请输入手机号';
+  static const String PLEASE_INPUT_EMAIL = '请输入邮箱';
   static const String PLEASE_INPUT_ADDRESS = '请输入地址';
   static const String PLEASE_INPUT_ADDRESS_DETAIL = '请输入地址详情';
   static const String LOGIN_SUCCESS = '登录成功';
@@ -35,6 +37,7 @@ class KString{
   static const String USERNAME = '用户名';
   static const String PASSWORD = '密码';
   static const String MOBILE = '手机';
+  static const String EMAIL = '邮箱';
   static const String ADDRESS = '地址';
   static const String ADDRESS_DETAIL = '地址详情';
   static const String LOGIN_OR_REGISTER = "登陆/注册";

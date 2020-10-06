@@ -1,9 +1,18 @@
 import express from 'express';
+import * as nodemailer from "nodemailer";
 let db = require('./db');
 var router = express.Router();
 var jwt = require("jsonwebtoken");
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
+
+function MathRand6() {
+    let num = "";
+    for (let i = 0; i < 6; i++) {
+        num += Math.floor(Math.random() * 10);
+    }
+    return num;
+}
 
 //管理员登录 Authorization: `Bearer ${token}`
 router.post('/user/login',(req,res) => {
@@ -27,6 +36,14 @@ router.post('/user/login',(req,res) => {
             res.json({
                 code:1000,
                 message:"密码错误",
+                data: results
+            });
+            return false;
+        }
+        if(results[0].activated === 0) {
+            res.json({
+                code:1000,
+                message:"尚未激活",
                 data: results
             });
             return false;
@@ -60,7 +77,7 @@ router.post('/user/login',(req,res) => {
 
 //注册
 router.post('/user/register',(req,res)  => {
-    let {username,password,mobile,address, provinceId, cityId, areaId} = req.body;
+    let {username,password,mobile,address, provinceId, cityId, areaId, email} = req.body;
     //查询帐户是否存在
     let sql = `select * from shop_user where username = ?`;
 	db.exec(sql,[username],(results,fields) => {
@@ -72,27 +89,49 @@ router.post('/user/register',(req,res)  => {
             });
             return false;
         }
-        const salt = bcrypt.genSaltSync(saltRounds);
-        password = bcrypt.hashSync(password, salt);
-
-        let sql = `insert into shop_user (username,password,mobile,address,provinceId,cityId,areaId) values (?,?,?,?,?,?,?)`;
-        db.exec(sql,[username,password,mobile,address,provinceId,cityId,areaId],(results,fields) => {
-            // 登录成功
-            let payload = {
-                username,
+        let activatedCode = MathRand6();
+        const transporter = nodemailer.createTransport({
+            service: 'qq',
+            auth: {
+                user: '1378026744@qq.com',
+                pass: 'povpumldcrdhhhhi' //授权码,通过QQ获取
             }
-            // 生成token
-            let token = jwt.sign(payload,'secret',{expiresIn:'365d'});
+        });
+        const mailOptions = {
+            from: '1378026744@qq.com', // 发送者
+            to: email, // 接受者,可以同时发送多个,以逗号隔开
+            subject: '激活码', // 标题
+            text: activatedCode, // 文本
+            // html: activatedCode
+        };
 
-            // 存储成功
-            res.json({
-                code:0,
-                message:'注册成功',
-                data: {
-                    token,
-                    id:results.insertId,
+        transporter.sendMail(mailOptions, function (err, info) {
+            if (err) {
+                console.log(err);
+                return;
+            }
+            console.log('发送成功');
+            const salt = bcrypt.genSaltSync(saltRounds);
+            password = bcrypt.hashSync(password, salt);
+            activatedCode = bcrypt.hashSync(activatedCode, salt);
+            let sql = `insert into shop_user (username,password,mobile,address,provinceId,cityId,areaId,email,activated_code) values (?,?,?,?,?,?,?,?,?)`;
+            db.exec(sql,[username,password,mobile,address,provinceId,cityId,areaId,email,activatedCode],(results,fields) => {
+                // 登录成功
+                let payload = {
                     username,
                 }
+                // 生成token
+                let token = jwt.sign(payload,'secret',{expiresIn:'365d'});
+                // 存储成功
+                res.json({
+                    code:0,
+                    message:'注册成功',
+                    data: {
+                        token,
+                        id:results.insertId,
+                        username,
+                    }
+                });
             });
         });
     });

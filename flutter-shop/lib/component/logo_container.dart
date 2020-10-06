@@ -7,7 +7,7 @@ class LogoContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //组件高度固定
-    double height = 200.0;
+    double height = 80.0;
     //组件宽高和父容器一样高
     double width = MediaQuery.of(context).size.width;
     //容器

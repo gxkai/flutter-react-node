@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_shop/model/cart_model.dart';
 import 'package:flutter_shop/page/category/category_good_list_page.dart';
 import 'package:flutter_shop/page/detail/good_detail_page.dart';
+import 'package:flutter_shop/page/user/activate_page.dart';
 import 'package:flutter_shop/page/user/login_page.dart';
 import 'package:flutter_shop/page/user/register_page.dart';
 import 'package:flutter_shop/page/user/member_page.dart';
@@ -88,5 +89,14 @@ class RouterUtil{
   //返回至上一个页面
   static pop(BuildContext context){
     Navigator.pop(context);
+  }
+  //路由至激活页面
+  static void toActivatePage(BuildContext context) {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => ActivatePage()
+        )
+    );
   }
 }

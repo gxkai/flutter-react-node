@@ -211,7 +211,7 @@ class _LoginPageState extends State<LoginPage> {
     }else{
 
       //弹框显示登录失败消息
-      MessageWidget.show(KString.LOGIN_FAILED);
+      MessageWidget.show(response['message']);
       //定义登录失败消息
       var data = {
         //用户名

@@ -66,7 +66,9 @@ class ItemTextField extends StatelessWidget {
               obscureText: obscureText,
               readOnly: readonly,
               onTap: () {
-                this.onPressed();
+                if(this.onPressed != null) {
+                  this.onPressed();
+                }
               },
             ),
           )
