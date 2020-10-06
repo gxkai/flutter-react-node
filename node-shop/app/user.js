@@ -2,25 +2,36 @@ import express from 'express';
 let db = require('./db');
 var router = express.Router();
 var jwt = require("jsonwebtoken");
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 
 //管理员登录 Authorization: `Bearer ${token}`
 router.post('/user/login',(req,res) => {
     let {username,password} = req.body;
     console.log(username);
     //查询帐户数据
-    let sql = `select * from shop_user where username = ? and password = ?`;
+    let sql = `select * from shop_user where username = ?`;
 	db.exec(sql,[username,password],(results,fields) => {
         console.log(results[0]);
         // 帐号密码错误
         if(!results.length){
             res.json({
                 code:1000,
-                message:"帐号或密码错误",
+                message:"帐号错误",
                 data: results
             });
             return false;
         }
-        let {id} = results[0];
+        let {id, password: hash} = results[0];
+        if(!bcrypt.compareSync(password, hash)) {
+            res.json({
+                code:1000,
+                message:"密码错误",
+                data: results
+            });
+            return false;
+        }
+
         console.log(results[0]['phone']);
         // 登录成功
         let payload = {
@@ -61,6 +72,9 @@ router.post('/user/register',(req,res)  => {
             });
             return false;
         }
+        const salt = bcrypt.genSaltSync(saltRounds);
+        password = bcrypt.hashSync(password, salt);
+
         let sql = `insert into shop_user (username,password,mobile,address) values (?,?,?,?)`;
         db.exec(sql,[username,password,mobile,address],(results,fields) => {
             // 登录成功
@@ -69,7 +83,7 @@ router.post('/user/register',(req,res)  => {
             }
             // 生成token
             let token = jwt.sign(payload,'secret',{expiresIn:'365d'});
-            
+
             // 存储成功
             res.json({
                 code:0,

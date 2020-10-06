@@ -1,3 +1,4 @@
 # Project exclude paths
 /node-shop/node_modules/
 /react-shop/node_modules/
+/.idea/
