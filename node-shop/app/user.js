@@ -60,7 +60,7 @@ router.post('/user/login',(req,res) => {
 
 //注册
 router.post('/user/register',(req,res)  => {
-    let {username,password,mobile,address} = req.body;
+    let {username,password,mobile,address, provinceId, cityId, areaId} = req.body;
     //查询帐户是否存在
     let sql = `select * from shop_user where username = ?`;
 	db.exec(sql,[username],(results,fields) => {
@@ -75,8 +75,8 @@ router.post('/user/register',(req,res)  => {
         const salt = bcrypt.genSaltSync(saltRounds);
         password = bcrypt.hashSync(password, salt);
 
-        let sql = `insert into shop_user (username,password,mobile,address) values (?,?,?,?)`;
-        db.exec(sql,[username,password,mobile,address],(results,fields) => {
+        let sql = `insert into shop_user (username,password,mobile,address,provinceId,cityId,areaId) values (?,?,?,?,?,?,?)`;
+        db.exec(sql,[username,password,mobile,address,provinceId,cityId,areaId],(results,fields) => {
             // 登录成功
             let payload = {
                 username,

@@ -6,8 +6,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c83aeaeb-6282-4257-b401-7f2216d008a1" name="Default Changelist" comment="feat:[购物车]批量更新;">
-      <change afterPath="$PROJECT_DIR$/README.MD" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node-shop.sql" beforeDir="false" afterPath="$PROJECT_DIR$/node-shop.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter-shop/ios/Podfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/flutter-shop/ios/Podfile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter-shop/ios/Runner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/flutter-shop/ios/Runner.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter-shop/lib/component/item_text_field.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter-shop/lib/component/item_text_field.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter-shop/lib/config/string.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter-shop/lib/config/string.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter-shop/lib/page/user/register_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutter-shop/lib/page/user/register_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter-shop/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/flutter-shop/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter-shop/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/flutter-shop/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node-shop/app/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/node-shop/app/user.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +84,7 @@
       <workItem from="1601798985279" duration="5276000" />
       <workItem from="1601855540518" duration="2208000" />
       <workItem from="1601860200399" duration="3207000" />
-      <workItem from="1601944331963" duration="2502000" />
+      <workItem from="1601944331963" duration="2788000" />
     </task>
     <task id="LOCAL-00001" summary="feat:[购物车]批量更新;">
       <created>1601859931468</created>
@@ -121,7 +128,14 @@
       <option name="project" value="LOCAL" />
       <updated>1601949254625</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="fix: [user]密码加密#">
+      <created>1601949790107</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1601949790107</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -294,14 +308,14 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="341" y="164" key="SettingsEditor/0.0.1680.1050/1680.0.1920.1080@0.0.1680.1050" timestamp="1601946956463" />
-    <state width="500" height="445" key="SwitcherDM" timestamp="1601865894623">
+    <state width="500" height="445" key="SwitcherDM" timestamp="1601969659794">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="500" height="445" key="SwitcherDM/0.0.1680.1050/1680.0.1920.1080@0.0.1680.1050" timestamp="1601865894623" />
-    <state x="440" y="265" key="Vcs.Push.Dialog.v2" timestamp="1601949255943">
+    <state width="500" height="445" key="SwitcherDM/0.0.1680.1050/1680.0.1920.1080@0.0.1680.1050" timestamp="1601969659794" />
+    <state x="440" y="265" key="Vcs.Push.Dialog.v2" timestamp="1601949791605">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="440" y="265" key="Vcs.Push.Dialog.v2/0.0.1680.1050/1680.0.1920.1080@0.0.1680.1050" timestamp="1601949255943" />
+    <state x="440" y="265" key="Vcs.Push.Dialog.v2/0.0.1680.1050/1680.0.1920.1080@0.0.1680.1050" timestamp="1601949791605" />
     <state x="440" y="265" key="Vcs.Push.Dialog.v2/0.0.1680.1050/1680.23.1920.1057@0.0.1680.1050" timestamp="1601864578402" />
     <state x="541" y="280" width="737" height="490" key="find.popup" timestamp="1601864891386">
       <screen x="0" y="0" width="1680" height="1050" />

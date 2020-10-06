@@ -1,4 +1,6 @@
 //page/user/register_page.dart文件
+import 'package:city_pickers/city_pickers.dart';
+import 'package:city_pickers/modal/result.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_shop/model/user_model.dart';
 import 'package:flutter_shop/config/index.dart';
@@ -25,6 +27,14 @@ class _RegisterPageState extends State<RegisterPage> {
   TextEditingController _mobileController;
   //地址文本编辑控制器
   TextEditingController _addressController;
+  //详细地址文本编辑控制器
+  TextEditingController _addressDetailController;
+  //省
+  String _provinceId;
+  //市
+  String _cityId;
+  //区
+  String _areaId;
   //用户名焦点节点
   FocusNode _userNameNode = FocusNode();
   //手机号焦点节点
@@ -33,6 +43,8 @@ class _RegisterPageState extends State<RegisterPage> {
   FocusNode _pwdNode = FocusNode();
   //地址焦点节点
   FocusNode _addressNode = FocusNode();
+  //地址详情焦点节点
+  FocusNode _addressDetailNode = FocusNode();
 
   @override
   void initState() {
@@ -45,6 +57,8 @@ class _RegisterPageState extends State<RegisterPage> {
     _mobileController = TextEditingController();
     //实例化地址控制器
     _addressController = TextEditingController();
+    //实例化详细地址控制器
+    _addressDetailController = TextEditingController();
   }
 
   @override
@@ -68,7 +82,7 @@ class _RegisterPageState extends State<RegisterPage> {
             //Logo展示
             LogoContainer(),
             SizedBox(
-              height: 80,
+              height: 20,
             ),
             //注册输入框组件
             _registContent(context),
@@ -148,6 +162,24 @@ class _RegisterPageState extends State<RegisterPage> {
             focusNode: _addressNode,
             title: KString.ADDRESS,
             hintText: KString.PLEASE_INPUT_ADDRESS,
+            readonly: true,
+            onPressed: () {
+              this._showCityPicker(context);
+            },
+          ),
+          SizedBox(height: 20.0),
+          //地址标题
+          _itemTitle(KString.ADDRESS),
+          SizedBox(
+            height: 10,
+          ),
+          //详细地址输入框
+          ItemTextField(
+            icon: Icon(Icons.home),
+            controller: _addressDetailController,
+            focusNode: _addressDetailNode,
+            title: KString.ADDRESS_DETAIL,
+            hintText: KString.PLEASE_INPUT_ADDRESS_DETAIL,
           ),
           SizedBox(height: 40.0),
         ],
@@ -201,7 +233,13 @@ class _RegisterPageState extends State<RegisterPage> {
       //手机号
       'mobile':_mobileController.text.toString(),
       //地址
-      'address':_addressController.text.toString(),
+      'address':'${_addressController.text.toString()}${_addressDetailController.text.toString()}',
+      //省
+      'provinceId': _provinceId,
+      //市
+      'cityId': _cityId,
+      //区
+      'areaId': _areaId,
     };
     //调用注册接口并传递参数
     var response = await HttpService.post(ApiUrl.USER_REGISTER,param:formData);
@@ -220,6 +258,21 @@ class _RegisterPageState extends State<RegisterPage> {
     }
   }
 
+  _showCityPicker(context) async {
+    Result temp = await CityPickers.showCityPicker(
+      context: context,
+       locationCode: '320583',
+      height: 400,
+    );
+    String city = "${temp.provinceName}${temp.cityName}${temp.areaName}";
+    print(city);
+    setState(() {
+      this._addressController.text = city;
+      this._provinceId = temp.provinceId;
+      this._cityId = temp.cityId;
+      this._areaId = temp.areaId;
+    });
+  }
 }
 
 

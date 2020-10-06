@@ -14,8 +14,12 @@ class ItemTextField extends StatelessWidget {
   String hintText;
   //是否为密码框
   bool obscureText;
+  //是否只读
+  bool readonly;
+  //点击回调函数
+  Function onPressed;
   //构造函数
-  ItemTextField({this.icon,this.controller,this.focusNode,this.title,this.hintText,this.obscureText = false});
+  ItemTextField({this.icon,this.controller,this.focusNode,this.title,this.hintText,this.obscureText = false, this.readonly = false, this.onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -60,6 +64,10 @@ class ItemTextField extends StatelessWidget {
               style: TextStyle(fontSize: 14),
               //是否为密码框
               obscureText: obscureText,
+              readOnly: readonly,
+              onTap: () {
+                this.onPressed();
+              },
             ),
           )
         ],

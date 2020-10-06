@@ -26,6 +26,7 @@ class KString{
   static const String PLEASE_INPUT_PWD = '请输入密码';
   static const String PLEASE_INPUT_MOBILE = '请输入手机号';
   static const String PLEASE_INPUT_ADDRESS = '请输入地址';
+  static const String PLEASE_INPUT_ADDRESS_DETAIL = '请输入地址详情';
   static const String LOGIN_SUCCESS = '登录成功';
   static const String LOGIN_FAILED = '用户名或密码错误';
   static const String REGISTER_SUCCESS = '注册成功';
@@ -35,6 +36,7 @@ class KString{
   static const String PASSWORD = '密码';
   static const String MOBILE = '手机';
   static const String ADDRESS = '地址';
+  static const String ADDRESS_DETAIL = '地址详情';
   static const String LOGIN_OR_REGISTER = "登陆/注册";
   static const String ALL_ORDER = "全部订单";
   static const String MY_COLLECT = "我的收藏";
